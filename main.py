@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-Multi-Rate DAG Generator
-    Copyright © 2021 Pourya Gohari
+Taskset Generator
 
 Usage:
     main                [options]
@@ -9,7 +8,7 @@ Usage:
 Options:
     --round, -r                         round the numbers [default: False]
     --utilization=N, -u N               system utilization in percent  [default: 50]
-    --generator=N, -g N                 task generation algorithm (0: WATERS 1: UUniFast 2: Emberson)  [default: 1]
+    --generator=N, -g N                 task generation algorithm (0: WATERS 1: UUniFast 2: Emberson 3:WATERS (fixed-sum))  [default: 1]
     --ntask=N, -n N                     number of tasks in one taskset  [default: 15]
     --nset=N, -s N                      number of tasksets to generate  [default: 1]
     --npe=N, -m N                       number of processing elements  [default: 4]
@@ -22,7 +21,6 @@ import lib.generator_UUNIFAST as uunifast
 import lib.generator_Emberson as emberson
 import lib.generator_WATERS_fixedsum as waters_fs
 import lib.task as task
-import lib.generate_DAG as g_dag
 import lib.transformer as trans
 
 from docopt import docopt
@@ -62,18 +60,11 @@ def generate_taskset(args):
         print("\tCreate task sets.")
         task_sets_waters = []
         while len(task_sets_waters) < 1:
-            task_sets_gen = []
-            for i in range(n_PE):
-                temp = waters.gen_tasksets(
-                    1, n_task / n_PE, req_uti / n_PE, profile, True, threshold / 100.0, 4, True)
-                for t in temp[0]:
-                    t.pe = i
-                task_sets_gen += temp[0]
-                # for t in task_sets_gen:
-                #     print(t)
+            task_sets_gen = waters_fs.gen_tasksets(
+                1, n_task, req_uti, profile, True, threshold / 100.0, 4, True)
+            task_sets_waters.append(task_sets_gen[0])
             # Transform tasks to fit framework structure.
             # Each task is an object of utilities.task.Task.
-            task_sets_waters.append(task_sets_gen)
         trans1 = trans.Transformer(task_sets_waters, 100)
         task_sets = trans1.transform_tasks(False, n_PE=n_PE, mapping=0)
         # for t in task_sets[0]:
@@ -91,20 +82,19 @@ def generate_taskset(args):
         # UUniFast benchmark without predefined periods.
 
         # # Generate log-uniformly distributed task sets:
-        # task_sets_uunifast = uunifast.gen_tasksets(
-        #         n_task, 1, 1, 100, req_uti, rounded=round_c)
+        task_sets_uunifast = uunifast.gen_tasksets(
+            n_task, 1, 1, 100, req_uti, rounded=round_c)
 
         # Generate log-uniformly distributed task sets with predefined
         # periods:
-        periods = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
+        # periods = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
         # periods = [5, 10, 20, 50, 100, 200, 500, 1000]
         # Interval from where the generator pulls log-uniformly.
-        min_pull = 1
         # min_pull = 5
-        max_pull = 2000
+        # max_pull = 2000
 
-        task_sets_uunifast = uunifast.gen_tasksets_pred(
-            n_task, 1, min_pull, max_pull, req_uti, periods)
+        # task_sets_uunifast = uunifast.gen_tasksets_pred(
+        #     n_task, 1, min_pull, max_pull, req_uti, periods)
 
         trans2 = trans.Transformer(task_sets_uunifast, 100)
         task_sets = trans2.transform_tasks(False, n_PE=n_PE, mapping=1)
@@ -173,13 +163,9 @@ def generate_taskset(args):
         print("\tCreate task sets.")
         task_sets_waters = []
         while len(task_sets_waters) < 1:
-            task_sets_gen = []
-            for i in range(n_PE):
-                temp = waters_fs.gen_tasksets(
-                    1, int(n_task / n_PE), req_uti / n_PE, profile, True, threshold / 100.0, 4, True)
-                for t in temp[0]:
-                    t.pe = i
-                task_sets_gen += temp[0]
+            task_sets_gen = waters_fs.gen_tasksets(
+                1, n_task, req_uti, profile, True, threshold / 100.0, 4, True)
+            task_sets_waters.append(task_sets_gen[0])
             # Transform tasks to fit framework structure.
             # Each task is an object of task.
             task_sets_waters.append(task_sets_gen)
@@ -211,11 +197,8 @@ def main():
 
     while n_gen != int(args['--nset']):
         task_set = generate_taskset(args)
-        print(">>> DAG generate <<<")
-        if (g_dag.generateDAG(task_set=task_set[0], root_node_num=5, branch_factor=4, depth=8, n_PE=int(args['--npe']),
-                              dag_name="mr-dag-" + str(n_gen))):
-            n_gen += 1
-            task_sets.append(task_set[0])
+        n_gen += 1
+        task_sets.append(task_set[0])
 
     ###
     # Save data.
@@ -226,7 +209,7 @@ def main():
         for ts in task_sets:
             header = ['name', 'phase', 'bcet', 'wcet', 'period', 'deadline']
 
-            with open('output/out-' + str(task_sets.index(ts)) + '.csv', 'w', encoding='UTF8') as f:
+            with open('out-' + str(task_sets.index(ts)) + '.csv', 'w', encoding='UTF8') as f:
                 writer = csv.writer(f)
 
                 # write the header
