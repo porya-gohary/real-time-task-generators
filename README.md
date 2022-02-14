@@ -53,14 +53,13 @@ $ python3 ./main.py
 ```
 
 ## 🔧 Features
-- Taskset Generator:
   * "[UUnifast](https://dl.acm.org/doi/abs/10.1007/s11241-005-0507-9)" taskset generator<sup>[1](#note1)</sup>
   * "[Real world automotive benchmark for free](https://www.ecrts.org/forum/viewtopic.php?f=20&t=23)" taskset generator with subset sum algorithm<sup>[1](#note1)</sup>
   * "[Emberson et al.](https://www.ecrts.org/archives/fileadmin/WebsitesArchiv/Workshops/WATERS/Proceedings/WATERS-2010-Proceedings.pdf#page=6)" taskset generator
   * "[Real world automotive benchmark for free](https://www.ecrts.org/forum/viewtopic.php?f=20&t=23)" taskset generator with RandFixedSum algorithm
 
 
-<a name="note1">1</a>: Some part of the code adabted from "[Timing Analysis of Asynchronized Distributed Cause-Effect Chains](https://github.com/tu-dortmund-ls12-rt/end-to-end)" paper implementation
+<a name="note1">1</a>: Some part of the code adapted from "[Timing Analysis of Asynchronized Distributed Cause-Effect Chains](https://github.com/tu-dortmund-ls12-rt/end-to-end)" paper implementation
 
 ## 🚧 Limitations 
 - For now, the generators just supports the discrete-time model and all the numbers are integer.
