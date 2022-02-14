@@ -207,7 +207,7 @@ def main():
 
     try:
         for ts in task_sets:
-            header = ['name', 'phase', 'bcet', 'wcet', 'period', 'deadline']
+            header = ['name', 'offset', 'bcet', 'wcet', 'period', 'deadline']
 
             with open('out-' + str(task_sets.index(ts)) + '.csv', 'w', encoding='UTF8') as f:
                 writer = csv.writer(f)
