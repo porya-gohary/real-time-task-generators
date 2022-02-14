@@ -64,6 +64,12 @@ $ python3 ./main.py
 
 ## 🚧 Limitations 
 - For now, the generators just supports the discrete-time model and all the numbers are integer.
+
+## 🌱 Contribution
+With your feedback and conversation, you can assist me in developing this application.
+- Open pull request with improvements
+- Discuss feedbacks and bugs in issues
+
 ## 📜 License
 Copyright © 2021 [Pourya Gohari](https://pourya-gohari.ir)
 
