@@ -1,0 +1,10 @@
+debug/
+build/
+cmake-build-debug/
+scripts/output/
+.vscode/
+.idea/
+*.o
+*~
+__pycache__/
+scripts/*.csv
