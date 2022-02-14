@@ -10,12 +10,6 @@ class task:
         self.period=kwargs.get('period', 0)
         self.deadline=kwargs.get('deadline', 0)
         self.pe=kwargs.get('pe', 0)
-        # dict.__setitem__(self, "name", kwargs.get('name', ''))
-        # dict.__setitem__(self, "phase", kwargs.get('phase', ''))
-        # dict.__setitem__(self, "bcet", int(kwargs.get('wcet', 0)*0.7))
-        # dict.__setitem__(self, "wcet", kwargs.get('wcet', 0))
-        # dict.__setitem__(self, "period", kwargs.get('period', 0))
-        # dict.__setitem__(self, "deadline", kwargs.get('deadline', 0))
         # Assigned after DAG Genereated
         self.parent = []
         self.child = []

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Task set generation with WATERS benchmark.
 From the paper: 'Real world automotive benchmark for free' (WATERS 2015).
-This part adapted from https://github.com/tu-dortmund-ls12-rt/end-to-end
+some part adapted from https://github.com/tu-dortmund-ls12-rt/end-to-end
 """
 from scipy import stats
 from scipy.stats import exponweib
