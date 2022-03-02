@@ -3,7 +3,7 @@
 Taskset Generator
 
 Usage:
-    main                [options]
+    task_generator                [options]
 
 Options:
     --round, -r                         round the numbers [default: False]

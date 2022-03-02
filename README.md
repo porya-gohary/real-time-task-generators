@@ -32,10 +32,12 @@ python3 -m pip install docopt scipy numpy csv
 ```
 
 ## ⚙️ Usage
+#### Task generator:
+
 The options of the taskset generator are as follows (`python3 ./main.py -h`):
 ```
 Usage:
-    main                [options]
+    task_generator                [options]
 
 Options:
     --round, -r             round the numbers [default: False]
@@ -49,7 +51,7 @@ Options:
 ```
 To test the tool and run the taskset generator with the default options:
 ```
-$ python3 ./main.py
+$ python3 ./task_generator.py
 ```
 
 ## 🔧 Features
