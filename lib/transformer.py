@@ -19,7 +19,7 @@ class Transformer:
         set.
         - set phase
         - number of PE
-        - mapping policy (0 -> not changing, 1 -> worst-fit, 2 -> first-fit , 3 -> best-fit)
+        - mapping policy (0 -> not changing, 1 -> worst-fit, 2 -> first-fit , 3 -> best-fit [Not implemented yet])
         """
         # Distribution of task phases
         distribution_phase = stats.uniform()

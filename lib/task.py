@@ -21,9 +21,13 @@ class task:
             % (self.name, self.pe, self.bcet, self.wcet, self.period,self.deadline)
         return res
 
-    def get_data (self):
-        return [self.name,self.phase, self.bcet , self.wcet
-                , self.period,self.deadline]
+    def get_data (self,mapping=False):
+        if(not mapping):
+            return [self.name,self.phase, self.bcet , self.wcet
+                    , self.period,self.deadline]
+        else:
+            return [self.name, self.phase, self.bcet, self.wcet
+                , self.period, self.deadline, self.pe]
 
     def __repr__(self):
         return repr((self.name, self.phase, self.bcet , self.wcet
