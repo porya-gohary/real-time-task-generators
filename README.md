@@ -34,7 +34,7 @@ python3 -m pip install docopt scipy numpy csv
 ## ⚙️ Usage
 #### Task generator:
 
-The options of the taskset generator are as follows (`python3 ./main.py -h`):
+The options of the taskset generator are as follows (`python3 ./task_generator.py -h`):
 ```
 Usage:
     task_generator                [options]
