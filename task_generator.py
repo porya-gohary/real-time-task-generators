@@ -171,28 +171,16 @@ def main():
 
     try:
         for ts in task_sets:
-            if(args['--mapping'] == 0 ):
-                header = ['Name', 'Offset', 'BCET', 'WCET', 'Period', 'Deadline']
+            header = ['Name', 'Offset', 'BCET', 'WCET', 'Period', 'Deadline', 'PE']
 
-                with open('taskset-' + str(task_sets.index(ts)) + '.csv', 'w', encoding='UTF8') as f:
-                    writer = csv.writer(f)
+            with open('taskset-' + str(task_sets.index(ts)) + '.csv', 'w', encoding='UTF8') as f:
+                writer = csv.writer(f)
 
-                    # write the header
-                    writer.writerow(header)
+                # write the header
+                writer.writerow(header)
 
-                    for t in ts:
-                        writer.writerow(t.get_data())
-            else:
-                header = ['Name', 'Offset', 'BCET', 'WCET', 'Period', 'Deadline', 'PE']
-
-                with open('taskset-' + str(task_sets.index(ts)) + '.csv', 'w', encoding='UTF8') as f:
-                    writer = csv.writer(f)
-
-                    # write the header
-                    writer.writerow(header)
-
-                    for t in ts:
-                        writer.writerow(t.get_data(True))
+                for t in ts:
+                    writer.writerow(t.get_data(True))
 
     except Exception as e:
         print(e)
