@@ -40,14 +40,15 @@ Usage:
     task_generator                [options]
 
 Options:
-    --round, -r             round the numbers [default: False]
-    --utilization=N, -u N   system utilization in percent  [default: 50]
-    --generator=N, -g N     task generation algorithm (0: WATERS 1: UUniFast 2: Emberson 3:WATERS (fixed-sum))  [default: 1]
-    --ntask=N, -n N         number of tasks in one taskset  [default: 15]
-    --nset=N, -s N          number of tasksets to generate  [default: 1]
-    --npe=N, -m N           number of processing elements  [default: 4]
-    --version, -v           show version and exit
-    --help, -h              show this message
+    --round, -r                         round the numbers [default: False]
+    --utilization=N, -u N               system utilization in percent  [default: 50]
+    --generator=N, -g N                 task generation algorithm (0: WATERS 1: UUniFast 2: Emberson 3:WATERS (fixed-sum))  [default: 1]
+    --mapping=N, -m N                   the mapping algorithm of taskset (0: No mapping 1: Worst-fit 2: First-fit) [default: 0]
+    --ntask=N, -n N                     number of tasks in one taskset  [default: 15]
+    --nset=N, -s N                      number of tasksets to generate  [default: 1]
+    --npe=N, -p N                       number of processing elements  [default: 4]
+    --version, -v                       show version and exit
+    --help, -h                          show this message
 ```
 To test the tool and run the taskset generator with the default options:
 ```
