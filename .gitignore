@@ -5,6 +5,7 @@ scripts/output/
 .vscode/
 .idea/
 *.o
+*.csv
 *~
 __pycache__/
 scripts/*.csv
