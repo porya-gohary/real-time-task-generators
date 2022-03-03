@@ -77,7 +77,7 @@ $ python3 ./dag_generator.py
 ⚠️ NOTE: This DAG generator does not produce fork-join graphs.
 
 #### Output format:
-The DAG generator tool works with standard XML format ([Example](./example/taskset-0.xml)). Each XML file contain the following information:
+The DAG generator tool works with standard XML format ([Example](./example/taskset-0.xml)). Each XML file contains the following information:
 - Task specification:
     * Task name (should start with "T")
     * Best-case execution time (BCET)
@@ -104,7 +104,7 @@ The DAG generator tool works with standard XML format ([Example](./example/tasks
 <a name="note2">2</a>: Some part of the code adapted from [here](https://github.com/Spiraline/DAGGen)
 
 ## 🚧 Limitations 
-- For now, the generators just supports the discrete-time model and all the numbers are integer.
+- For now, the generators just support the discrete-time model and all the numbers are integer.
 
 ## 🌱 Contribution
 With your feedback and conversation, you can assist me in developing this application.
