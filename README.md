@@ -76,7 +76,7 @@ $ python3 ./dag_generator.py
 ```
 ⚠️ NOTE: This DAG generator does not produce fork-join graphs.
 
-##### Output format:
+#### Output format:
 The DAG generator tool works with standard XML format ([Example](./example/taskset-0.xml)). Each XML file contain the following information:
 - Task specification:
     * Task name (should start with "T")
