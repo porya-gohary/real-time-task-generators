@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mrdag name="taskset-1">
+  <task name="T0">
+    <spec name="BCET">11</spec>
+    <spec name="WCET">15</spec>
+    <spec name="Period">139</spec>
+    <spec name="Deadline">139</spec>
+    <spec name="PE">0</spec>
+  </task>
+  <task name="T1">
+    <spec name="BCET">4</spec>
+    <spec name="WCET">5</spec>
+    <spec name="Period">153</spec>
+    <spec name="Deadline">153</spec>
+    <spec name="PE">1</spec>
+  </task>
+  <task name="T2">
+    <spec name="BCET">8</spec>
+    <spec name="WCET">11</spec>
+    <spec name="Period">213</spec>
+    <spec name="Deadline">213</spec>
+    <spec name="PE">2</spec>
+  </task>
+  <task name="T3">
+    <spec name="BCET">1</spec>
+    <spec name="WCET">1</spec>
+    <spec name="Period">237</spec>
+    <spec name="Deadline">237</spec>
+    <spec name="PE">3</spec>
+  </task>
+  <task name="T4">
+    <spec name="BCET">15</spec>
+    <spec name="WCET">21</spec>
+    <spec name="Period">916</spec>
+    <spec name="Deadline">916</spec>
+    <spec name="PE">3</spec>
+  </task>
+  <task name="T5">
+    <spec name="BCET">7</spec>
+    <spec name="WCET">10</spec>
+    <spec name="Period">1283</spec>
+    <spec name="Deadline">1283</spec>
+    <spec name="PE">3</spec>
+  </task>
+  <task name="T6">
+    <spec name="BCET">35</spec>
+    <spec name="WCET">49</spec>
+    <spec name="Period">1568</spec>
+    <spec name="Deadline">1568</spec>
+    <spec name="PE">1</spec>
+  </task>
+  <task name="T7">
+    <spec name="BCET">26</spec>
+    <spec name="WCET">37</spec>
+    <spec name="Period">2166</spec>
+    <spec name="Deadline">2166</spec>
+    <spec name="PE">3</spec>
+  </task>
+  <task name="T8">
+    <spec name="BCET">54</spec>
+    <spec name="WCET">76</spec>
+    <spec name="Period">3189</spec>
+    <spec name="Deadline">3189</spec>
+    <spec name="PE">2</spec>
+  </task>
+  <task name="T9">
+    <spec name="BCET">70</spec>
+    <spec name="WCET">99</spec>
+    <spec name="Period">4534</spec>
+    <spec name="Deadline">4534</spec>
+    <spec name="PE">3</spec>
+  </task>
+  <task name="T10">
+    <spec name="BCET">40</spec>
+    <spec name="WCET">57</spec>
+    <spec name="Period">5027</spec>
+    <spec name="Deadline">5027</spec>
+    <spec name="PE">1</spec>
+  </task>
+  <task name="T11">
+    <spec name="BCET">220</spec>
+    <spec name="WCET">314</spec>
+    <spec name="Period">5239</spec>
+    <spec name="Deadline">5239</spec>
+    <spec name="PE">1</spec>
+  </task>
+  <task name="T12">
+    <spec name="BCET">97</spec>
+    <spec name="WCET">138</spec>
+    <spec name="Period">6668</spec>
+    <spec name="Deadline">6668</spec>
+    <spec name="PE">2</spec>
+  </task>
+  <task name="T13">
+    <spec name="BCET">334</spec>
+    <spec name="WCET">476</spec>
+    <spec name="Period">7922</spec>
+    <spec name="Deadline">7922</spec>
+    <spec name="PE">3</spec>
+  </task>
+  <task name="T14">
+    <spec name="BCET">171</spec>
+    <spec name="WCET">243</spec>
+    <spec name="Period">9409</spec>
+    <spec name="Deadline">9409</spec>
+    <spec name="PE">2</spec>
+  </task>
+  <edges>
+    <edge srcTask="T0" name="e0,5" dstTask="T5"/>
+    <edge srcTask="T0" name="e0,13" dstTask="T13"/>
+    <edge srcTask="T1" name="e1,5" dstTask="T5"/>
+    <edge srcTask="T1" name="e1,13" dstTask="T13"/>
+    <edge srcTask="T2" name="e2,5" dstTask="T5"/>
+    <edge srcTask="T2" name="e2,13" dstTask="T13"/>
+    <edge srcTask="T3" name="e3,13" dstTask="T13"/>
+    <edge srcTask="T4" name="e4,5" dstTask="T5"/>
+    <edge srcTask="T4" name="e4,13" dstTask="T13"/>
+    <edge srcTask="T5" name="e5,6" dstTask="T6"/>
+    <edge srcTask="T6" name="e6,7" dstTask="T7"/>
+    <edge srcTask="T7" name="e7,8" dstTask="T8"/>
+    <edge srcTask="T8" name="e8,9" dstTask="T9"/>
+    <edge srcTask="T9" name="e9,10" dstTask="T10"/>
+  </edges>
+</mrdag>
