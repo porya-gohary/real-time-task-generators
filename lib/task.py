@@ -6,7 +6,7 @@ class task:
     def __init__(self, **kwargs):
         """Initialize a task."""
         self.name = kwargs.get('name', '')
-        self.phase = kwargs.get('phase', '')
+        self.jitter = kwargs.get('jitter', '')
         if 'bcet' in kwargs:
             self.bcet = kwargs.get('bcet', 0)
         else:
@@ -28,12 +28,12 @@ class task:
 
     def get_data(self, mapping=False):
         if (not mapping):
-            return [self.name, self.phase, self.bcet, self.wcet
+            return [self.name, self.jitter, self.bcet, self.wcet
                 , self.period, self.deadline]
         else:
-            return [self.name, self.phase, self.bcet, self.wcet
+            return [self.name, self.jitter, self.bcet, self.wcet
                 , self.period, self.deadline, self.pe]
 
     def __repr__(self):
-        return repr((self.name, self.phase, self.bcet, self.wcet
+        return repr((self.name, self.jitter, self.bcet, self.wcet
                      , self.period, self.deadline))

@@ -111,7 +111,7 @@ def generate_taskset(args):
             task_set_emberson = emberson.gen_tasksets(n=n_task, u=req_uti, nsets=1, permin=10, permax=100, gran=5,
                                                       round_C=round_c, dist="logunif")
             trans3 = trans.Transformer(task_set_emberson, 1)
-            task_sets = trans3.transform_tasks(phase=False, n_PE=n_PE, mapping=mapping)
+            task_sets = trans3.transform_tasks(jitter=False, n_PE=n_PE, mapping=mapping)
             return task_sets
         elif int(args['--generator']) == 3:
             # WATERS benchmark with fixed-sum utilization
@@ -138,7 +138,7 @@ def generate_taskset(args):
             # Transform tasks to fit framework structure.
             # Each task is an object of utilities.task.Task.
             trans4 = trans.Transformer(task_sets_waters, 100)
-            task_sets = trans4.transform_tasks(phase=False, n_PE=n_PE, mapping=mapping)
+            task_sets = trans4.transform_tasks(jitter=False, n_PE=n_PE, mapping=mapping)
             return task_sets
 
         else:
@@ -171,7 +171,7 @@ def main():
 
     try:
         for ts in task_sets:
-            header = ['Name', 'Offset', 'BCET', 'WCET', 'Period', 'Deadline', 'PE']
+            header = ['Name', 'Jitter', 'BCET', 'WCET', 'Period', 'Deadline', 'PE']
 
             with open('taskset-' + str(task_sets.index(ts)) + '.csv', 'w', encoding='UTF8') as f:
                 writer = csv.writer(f)

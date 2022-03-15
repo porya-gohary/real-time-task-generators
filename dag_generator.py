@@ -135,7 +135,7 @@ def read_csv(file):
             # Iterate over each row in the csv using reader object and make tasks
             for row in csv_dict_reader:
                 taskset.append(
-                    task.task(name=row['Name'], phase=int(row['Offset']), bcet=int(row['BCET']), wcet=int(row['WCET']),
+                    task.task(name=row['Name'], jitter=int(row['Jitter']), bcet=int(row['BCET']), wcet=int(row['WCET']),
                               period=int(row['Period']), deadline=int(row['Deadline']), pe=int(row['PE'])))
         return taskset
     except Exception as e:

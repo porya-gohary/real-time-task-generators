@@ -1,4 +1,4 @@
-Name,Offset,BCET,WCET,Period,Deadline,PE
+Name,Jitter,BCET,WCET,Period,Deadline,PE
 T0,0,3,3,138,138,0
 T1,0,7,9,193,193,1
 T2,0,3,3,202,202,2
