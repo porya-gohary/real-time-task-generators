@@ -31,9 +31,9 @@ class Transformer:
             # Sort tasks set by periods.
             sorted_task_set = sorted(task_set, key=lambda task: task.period)
             transformed_task_set = []
-            i = 0
+
             # Transform each task individually.
-            for task in sorted_task_set:
+            for i, task in enumerate(sorted_task_set):
                 # Set jitter.
                 if jitter:
                     jitter = int(float(format(distribution_jitter.rvs() * 1000,
@@ -74,7 +74,7 @@ class Transformer:
                 elif (mapping == 2):
                     first_index = 0
                     u = (task.wcet / task.period)
-                    for i in range (n_PE):
+                    for j in range (n_PE):
                         if (PE_util[first_index]- u >= 0):
                             break
                         first_index+=1
@@ -92,6 +92,5 @@ class Transformer:
                                pe=task.pe,
                                deadline=int(float(format(task.deadline, ".2f"))
                                             * self.time_scale)))
-                i += 1
             transformed_task_sets.append(transformed_task_set)
         return transformed_task_sets
