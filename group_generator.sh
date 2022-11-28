@@ -65,3 +65,11 @@ done
 mkdir -p ./jobsets
 mv jobset-*.csv ./jobsets
 
+mkdir -p segmentsets
+for file in ./jobsets/jobset-*.csv ; do
+    echo ${file}
+    python3 job_set_to_segment_set.py -j ${file}
+done
+
+mv ./jobsets/jobset-*.yaml ./segmentsets
+
