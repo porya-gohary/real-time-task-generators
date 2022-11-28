@@ -21,6 +21,10 @@ class task:
         self.isLeaf = False
         self.level = 0
 
+
+    def get_id(self):
+        return self.name.replace('T', '')
+
     def __str__(self):
         res = "%-9s PE=%2s BCET=%-5.1f WCET=%-5.1f Period=%7s Deadline=%7s" \
               % (self.name, self.pe, self.bcet, self.wcet, self.period, self.deadline)

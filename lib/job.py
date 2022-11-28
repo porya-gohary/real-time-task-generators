@@ -24,9 +24,13 @@ class job(task):
         return repr((self.job_name, self.pe, self.jitter, self.bcet, self.wcet
                      , self.period, self.absolute_deadline))
 
-    def get_data(self, mapping=False):
-        if (not mapping):
+    def get_data(self, mapping=False, sag_format=False):
+        if not mapping and not sag_format:
             return [self.job_name, self.earliest_arrival, self.latest_arrival, self.bcet, self.wcet
+                , self.absolute_deadline, self.priority]
+
+        elif sag_format:
+            return [self.get_id(), self.instance_num, self.earliest_arrival, self.latest_arrival, self.bcet, self.wcet
                 , self.absolute_deadline, self.priority]
         else:
             return [self.job_name, self.earliest_arrival, self.latest_arrival, self.bcet, self.wcet

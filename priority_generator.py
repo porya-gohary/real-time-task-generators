@@ -8,6 +8,7 @@ Usage:
 Options:
     --taskset FILE, -t FILE          taskset csv file [default: taskset-0.csv]
     --method=N, -m N                 priority assigning method (0: Rate-monotonic,1: Deadline-monotonic,2: Earliest deadline first (EDF)) [default: 0]
+    --sag, -s                        generate with SAG format
     --version, -v                    show version and exit
     --help, -h                       show this message
 """
@@ -91,15 +92,22 @@ def read_csv(file):
         sys.exit(1)
 
 
-def write_csv(job_set, taskset_name):
+def write_csv(job_set, taskset_name, sag_format=False):
     try:
-        header = ['Name', 'Arrival min.', 'Arrival max.', 'BCET', 'WCET', 'Abs. deadline', 'PE', 'Priority']
-        with open("jobset-"+taskset_name + '.csv', 'w', encoding='UTF8') as f:
-            writer = csv.writer(f)
-            writer.writerow(header)
-            for j in job_set:
-                writer.writerow(j.get_data(True))
-                
+        if not sag_format:
+            header = ['Name', 'Arrival min.', 'Arrival max.', 'BCET', 'WCET', 'Abs. deadline', 'PE', 'Priority']
+            with open("jobset-" + taskset_name + '.csv', 'w', encoding='UTF8') as f:
+                writer = csv.writer(f)
+                writer.writerow(header)
+                for j in job_set:
+                    writer.writerow(j.get_data(mapping=True))
+        else:
+            header = ['Task ID', 'Job ID', 'Arrival min', 'Arrival max', 'Cost min', 'Cost max', 'Deadline', 'Priority']
+            with open("jobset-" + taskset_name + '.csv', 'w', encoding='UTF8') as f:
+                writer = csv.writer(f)
+                writer.writerow(header)
+                for j in job_set:
+                    writer.writerow(j.get_data(mapping=False, sag_format=True))
     except Exception as e:
         print(e)
         print("ERROR: save")
@@ -112,7 +120,9 @@ def main():
     hyperperiod = cal_hyperperiod(task_set)
     taskset_name = os.path.splitext(os.path.basename(args['--taskset']))[0]
     job_set = generate_priority(task_set, hyperperiod, int(args['--method']))
-    write_csv(job_set,taskset_name)
+    sag_format = args['--sag']
+    write_csv(job_set, taskset_name, sag_format)
+
 
 if __name__ == '__main__':
     main()
