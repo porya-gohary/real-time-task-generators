@@ -5,6 +5,7 @@ Usage:
 
 Options:
     -s N                      number of tasksets to generate  [default: 1]
+    -n N                      number of tasks in each taskset  [default: 10]
     -u N                      system utilization in percent  [default: 50]
     -g N                      task generation algorithm (0: WATERS 1: UUniFast 2: Emberson 3: WATERS (fixed-sum))  [default: 1]
     -p N                      priority assigning method (0: Rate-monotonic 1: Deadline-monotonic 2: Earliest deadline first (EDF)) [default: 0]
@@ -18,10 +19,14 @@ utilization=50
 algorithm=1
 priority=0
 cores=4
-while getopts "s:u:g:p:c:vh" opt; do
+n_tasks=10
+while getopts "s:n:u:g:p:c:vh" opt; do
   case $opt in
   s)
     n_tasksets=$OPTARG
+    ;;
+  n)
+    n_tasks=$OPTARG
     ;;
   u)
     utilization=$OPTARG
@@ -54,7 +59,7 @@ while getopts "s:u:g:p:c:vh" opt; do
   esac
 done
 
-python3 task_generator.py -s $n_tasksets -u $utilization -g $algorithm -p $cores
+python3 task_generator.py -s $n_tasksets -u $utilization -g $algorithm -p $cores -n $n_tasks
 mkdir -p ./tasksets
 mv taskset-*.csv ./tasksets
 
