@@ -166,7 +166,7 @@ def make_uppaal_file(taskset, file_name):
     tasks = "const task_t Tasks[N] = {"
     for t in taskset:
         if t.period >= 32768:
-            print("WARNING: Period is big high for UPPAAL")
+            print("WARNING: Period is too high for UPPAAL")
             for i in range(0, 3):
                 if t.period >= 32768:
                     t.period = int(t.period / 10)
@@ -183,10 +183,12 @@ def make_uppaal_file(taskset, file_name):
     # print(tasks)
     # write to XML file
     try:
-        xml_file = open(file_name + ".xml", "w+")
+        xml_file_name = file_name + ".xml"
+        xml_file = open(xml_file_name, "w+")
         xml_file.writelines(xml_file_content)
         xml_file.close()
-        q_file = open(file_name + ".q", "w+")
+        q_file_name = file_name + ".q"
+        q_file = open(q_file_name, "w+")
         q_file.write(q_file_content)
         q_file.close()
     except Exception as e:
