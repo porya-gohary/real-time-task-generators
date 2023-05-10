@@ -21,7 +21,6 @@ from lxml import etree as ET
 import lib.task as task
 import lib.job as job
 import re
-import graphviz
 from docopt import docopt
 import csv
 
