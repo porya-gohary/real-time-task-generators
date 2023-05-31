@@ -63,8 +63,8 @@ def generate_taskset(args):
             print("\tCreate task sets.")
             task_sets_waters = []
             while len(task_sets_waters) < 1:
-                task_sets_gen = waters_fs.gen_tasksets(
-                    1, n_task, req_uti, profile, True, threshold / 100.0, 4, True)
+                task_sets_gen = waters.gen_tasksets(
+                    1, n_task, req_uti, profile, True, threshold / 100.0, 4, False)
                 task_sets_waters.append(task_sets_gen[0])
                 # Transform tasks to fit framework structure.
                 # Each task is an object of utilities.task.Task.

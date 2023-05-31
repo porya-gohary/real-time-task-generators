@@ -6,11 +6,12 @@ class task:
     def __init__(self, **kwargs):
         """Initialize a task."""
         self.name = kwargs.get('name', '')
-        self.jitter = kwargs.get('jitter', '')
+        # self.jitter = kwargs.get('jitter', 0)
+        self.jitter = int(kwargs.get('period', 0) * 0.05)
         if 'bcet' in kwargs:
             self.bcet = kwargs.get('bcet', 0)
         else:
-            self.bcet = int(math.ceil(kwargs.get('wcet', 0) * 0.7))
+            self.bcet = int(math.ceil(kwargs.get('wcet', 0) * 0.6))
         self.wcet = kwargs.get('wcet', 0)
         self.period = kwargs.get('period', 0)
         self.deadline = kwargs.get('deadline', 0)
