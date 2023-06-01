@@ -1,0 +1,8 @@
+debug/
+*.o
+runtests
+nptest
+*~
+*.dot
+*.pdf
+comparison/
