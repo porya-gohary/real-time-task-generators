@@ -130,7 +130,7 @@ namespace NP {
 
 		in.exceptions(state_before);
 
-        std::cout << "tid: " << tid << " jid: " << jid << " arr_min: " << arr_min << " arr_max: " << arr_max << " cost_min: " << cost_min << " cost_max: " << cost_max << " dl: " << dl << " prio: " << prio << std::endl;
+//        std::cout << "tid: " << tid << " jid: " << jid << " arr_min: " << arr_min << " arr_max: " << arr_max << " cost_min: " << cost_min << " cost_max: " << cost_max << " dl: " << dl << " prio: " << prio << std::endl;
 
 
 		return Job<Time>{jid, Interval<Time>{arr_min, arr_max},
