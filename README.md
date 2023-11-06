@@ -55,7 +55,7 @@ $ python ./task_generator.py
 ```
 
 ### Jobset generator:
-In order to generate a jobset with specific job-level fixed priority policy from a taskset, you can use the `./priority_generator`. The options of the jobset generator are as follows (`./priority_generator.py -h`):
+In order to generate a jobset with specific job-level fixed priority policy from a taskset, you can use the `./priority_generator.py`. The options of the jobset generator are as follows (`./priority_generator.py -h`):
 ```
 Usage:
     priority_generator               [-t FILE] [options]
